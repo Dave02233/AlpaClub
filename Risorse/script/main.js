@@ -3,6 +3,7 @@ let sideNavClosedByUser = false;
 let map = document.getElementById("mappa");
 let mapButton = document.getElementById("showMap");
 
+//Toggle visualizzazione della mappa
 function reverseMapDisplay() {
 
     if (map.classList.contains("hidden") || !map.classList.contains("visible")) {
@@ -22,9 +23,9 @@ function reverseMapDisplay() {
     }
 }
 
+//Toggle del side nav in base allo scroll nella pagina
+
 function toggleSideNav() {
-
-
     
     let scrollPercent = (window.scrollY / document.documentElement.scrollHeight) * 100;
 
@@ -48,6 +49,7 @@ function toggleSideNav() {
     
 }
 
+//Rimuove la barra laterale, con pulsante di chiusura o gli altri presenti
 function removeSideNav() {
     let sideNav = document.querySelector(".side-nav");
 
@@ -56,6 +58,45 @@ function removeSideNav() {
     
     sideNavClosedByUser = true;
 }
+
+//Check salita o discesa nella pagina 
+let actualScroll = 0;
+let lastScroll = 0; 
+let allImages = document.querySelectorAll("img, video");
+let allSelected = document.querySelectorAll("p, main, section");
+
+setInterval(() => {
+    actualScroll = window.scrollY;
+
+    if(actualScroll > lastScroll) {
+        console.log("Andiamo giù");
+        allSelected.forEach(element => {
+            element.style.backgroundColor = "beige";
+            element.style.color = "chocolate";
+        });
+
+    }else if(actualScroll < lastScroll) {
+        console.log("Andiamo su");
+        allSelected.forEach(element => {
+            element.style.backgroundColor = "chocolate";
+            element.style.color = "beige";
+        });
+
+    }else{
+        console.log("Fermi");
+
+        setTimeout(() => {
+            allSelected.forEach(element => {
+                element.style.removeProperty("background-color");
+                element.style.removeProperty("color");
+                //element.style.backgroundColor = "inherit";
+                //element.style.color = "inherit";
+            }, 500);
+        });
+        
+    }
+}, 500);
+setInterval(() => lastScroll = window.scrollY, 750);
 
 
 mapButton.addEventListener("click", reverseMapDisplay);

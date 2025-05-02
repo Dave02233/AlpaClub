@@ -1,3 +1,7 @@
+*{
+    transition: all 0.7s ease-in-out;
+}
+
 html {
     font-size: 18px;
 }
@@ -8,7 +12,7 @@ body {
 }
 
 main{
-    background-color: beige;
+    background-color: beige !important;
 }
 
 video{
@@ -44,6 +48,7 @@ header h1:hover{
     color:rgba(210, 105, 30, 0.567);
     text-shadow: -1px -2px 1px rgb(82, 24, 24);
 }
+
 
 nav{
     background-color: beige;
@@ -239,8 +244,6 @@ footer {
 
     width: 100%;
 
-
-
     justify-content: space-between;
     align-items: center;
 
@@ -306,6 +309,8 @@ section#mapSection{
 
     position: fixed;
 
+    z-index: 5;
+
     grid-template-rows: repeat(10, 2fr);
     grid-template-columns: 1fr;
 
@@ -343,7 +348,7 @@ section#mapSection{
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-
+        
         list-style: none;
 
         padding: 0;
@@ -409,10 +414,12 @@ section#mapSection{
 
 .side-nav.visible{
     width: 20%;
+    
 }
 
 .side-nav.hidden{
     width: 0;
+    
 }
 
 @media only screen and (min-width: 1400px) {
@@ -431,11 +438,37 @@ section#mapSection{
     html{
         font-size: 15px ;
     }
+
+    header h1:hover{
+        background-color: rgb(255, 166, 0);
+        color:chocolate;
+    }
+
+    nav li:hover {
+        text-decoration-color: rgba(82, 24, 24, 0.8);
+    }
+
+    .side-nav button:hover{
+        color: bisque;
+        background-color: red;
+    }
+
+    .side-nav ul a:hover{
+        background-color: inherit;
+        color: rgb(232, 70, 70);
+        text-shadow: none;
+    }
+
 }
 
 @media only screen and (max-width: 425px) {
     html{
-        font-size: 11px ;
+        font-size: 13px ;
+    }
+
+    .side-nav.visible{
+        width: 40%;
+        
     }
 }
 
