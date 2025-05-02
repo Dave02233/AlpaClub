@@ -42,7 +42,7 @@ function toggleSideNav() {
         }
     }
 
-    if(scrollPercent < 5) {
+    if(scrollPercent < 3) {
         sideNavClosedByUser = false;
     }   
     

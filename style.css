@@ -349,7 +349,7 @@ section#mapSection{
         padding: 0;
         margin: 0;
 
-        grid-area: 2 / 1 / 8 / 1;
+        grid-area: 2 / 1 / 9 / 1;
 
         li{
             transition: all 0.2s ease-in;
@@ -395,7 +395,7 @@ section#mapSection{
 
         margin: 0;
 
-        font-size: 1rem;
+        font-size: 0.7rem;
         font-style: italic;
 
         align-content: center;
