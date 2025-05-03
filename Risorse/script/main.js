@@ -23,6 +23,8 @@ function reverseMapDisplay() {
     }
 }
 
+mapButton.addEventListener("click", reverseMapDisplay);
+
 //Toggle del side nav in base allo scroll nella pagina
 
 function toggleSideNav() {
@@ -69,21 +71,21 @@ setInterval(() => {
     actualScroll = window.scrollY;
 
     if(actualScroll > lastScroll) {
-        console.log("Andiamo giù");
+        //console.log("Andiamo giù");
         allSelected.forEach(element => {
             element.style.backgroundColor = "beige";
             element.style.color = "chocolate";
         });
 
     }else if(actualScroll < lastScroll) {
-        console.log("Andiamo su");
+        //console.log("Andiamo su");
         allSelected.forEach(element => {
             element.style.backgroundColor = "chocolate";
             element.style.color = "beige";
         });
 
     }else{
-        console.log("Fermi");
+        //console.log("Fermi");
 
         setTimeout(() => {
             allSelected.forEach(element => {
@@ -96,15 +98,25 @@ setInterval(() => {
 }, 500);
 setInterval(() => lastScroll = window.scrollY, 750);
 
-
-mapButton.addEventListener("click", reverseMapDisplay);
-
 window.addEventListener("scroll", toggleSideNav);
 
 
 //Secret word access
-let secretcode = "aMaronnc'accumpagn";
+// Hash of the secret code (precomputed using SHA-256)
+const secretHash = "024c01119a5bf8be6b755b2a2c0648ad73a06482c182ca51ce84549bb17d9773"; // Replace with the actual hash
+
 let actWord = [];
+
+//Conversione input in SHA-256 
+async function hashInput(input) {
+    const encoder = new TextEncoder(); //Creazione istanza, serve per convertire una stringa in un array di byte
+    const data = encoder.encode(input); //Conversione string => array di bye
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data); //API per calcolo hash SHA-256 (rappresentazione binaria dell'hash?)
+    //console.log(hashBuffer);
+    return Array.from(new Uint8Array(hashBuffer)) //Conversione del buffer in un array di byte
+        .map(b => b.toString(16).padStart(2, "0")) //Converte ogni byte in una stringa hex, padstart per mettere uno 0 davanti nel caso lunghezza < 2
+        .join("");
+}
 
 let FrameUbungu = document.createElement("iframe");
 FrameUbungu.src ="https://embed.polymarket.com/market.html?market=will-fridolin-ambongo-besungu-be-the-next-pope&features=volume&theme=dark";
@@ -129,23 +141,25 @@ FrameParolin.style.padding = 0;
 FrameParolin.style.alignContent = "center";
 
 
-document.addEventListener("keydown", (event) => {
-    console.log(event.key);
-    if(event.key === ' '  || event.key === 'Delete') {
+document.addEventListener("keydown", async (event) => {
+    if (event.key === ' ' || event.key === 'Delete') {
         actWord = [];
-    }else if(event.key === 'Backspace') {
+    } else if (event.key === 'Backspace') {
         actWord.pop();
-    }else if(event.key === 'Enter') {
-        if(actWord.join('') === secretcode) {
+    } else if (event.key === 'Enter') {
+        const userInput = actWord.join('');
+        const userHash = await hashInput(userInput);
+        console.log(userHash);
+        if (userHash === secretHash) {
             alert("Benvenuto nel mondo dei miracoli evangelici!");
             actWord = [];
             document.querySelector("#navBar").appendChild(FrameUbungu);
             document.querySelector("#navBar").appendChild(FrameParolin);
-        }else{
+        } else {
             window.alert("Codice errato!");
         }
-    }else{
-        if(event.key !== 'Shift'){
+    } else {
+        if (event.key !== 'Shift') {
             actWord.push(event.key);
         }
     }
