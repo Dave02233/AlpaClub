@@ -136,13 +136,19 @@
         <h3>Contatti</h3>
         <p>Per informazioni e prenotazioni, contatta Michele Torrentino o Davide Cannistraro via email all'indirizzo <a href="mailto:info@LittleTorrent.it?subject=Prenotazione%20Visita%20&body=Buongiorno,%20vorrei%20prenotare%20una%20giornata%20nel%20vostro%20parco%20meraviglioso">info@LittleTorrent.it</a></p>
     </footer>
-    <section>
-        <form method="POST">
-            <label for="prova">Inserisci il valore</label>
-            <input type="text" name="prova" id="prova">
-            <input type="submit" value="Submit">
+    <section id="formContainer">
+        <form>       <!--method="POST"-->
+            <h1>Lascia un feedback!</h1>
+            <section>
+                <label for="nome">Inserisci il tuo nome</label>
+                <input type="text" name="nome" id="nome" required pattern="[a-zA-Z\s]+" minlength="3" maxlength="10">
+            </section>
+            <section>
+                <label for="feedbackMessage">Messaggio di feedback</label>
+                <textarea name="feedbackMessage" id="feedbackMessage" rows="3" cols="20" required minlength="3" maxlength="200"></textarea>
+            </section>
+            <input id="submitFeedback" type="button" value="Submit"> <!--Ho tolto submit per ora per aggiungere l'event-->
         </form>
     </section>
 </body>
-<!--script> window.prompt('Stai per entrare in un mondo di divertimento e alpaca, inserisci il tuo nome per continuare'); </script-->
 </html>

@@ -10,7 +10,7 @@ function reverseMapDisplay() {
         
         map.classList.add("visible");
         map.classList.remove("hidden");
-        console.log(map.classList);
+        //console.log(map.classList);
 
         mapButton.innerHTML = "-";
 
@@ -102,8 +102,7 @@ window.addEventListener("scroll", toggleSideNav);
 
 
 //Secret word access
-// Hash of the secret code (precomputed using SHA-256)
-const secretHash = "024c01119a5bf8be6b755b2a2c0648ad73a06482c182ca51ce84549bb17d9773"; // Replace with the actual hash
+const secretHash = "024c01119a5bf8be6b755b2a2c0648ad73a06482c182ca51ce84549bb17d9773";
 
 let actWord = [];
 
@@ -111,7 +110,7 @@ let actWord = [];
 async function hashInput(input) {
     const encoder = new TextEncoder(); //Creazione istanza, serve per convertire una stringa in un array di byte
     const data = encoder.encode(input); //Conversione string => array di bye
-    const hashBuffer = await crypto.subtle.digest("SHA-256", data); //API per calcolo hash SHA-256 (rappresentazione binaria dell'hash?)
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data); //API per calcolo hash SHA-256 (rappresentazione binaria dell'hash?), asincrona con promise
     //console.log(hashBuffer);
     return Array.from(new Uint8Array(hashBuffer)) //Conversione del buffer in un array di byte
         .map(b => b.toString(16).padStart(2, "0")) //Converte ogni byte in una stringa hex, padstart per mettere uno 0 davanti nel caso lunghezza < 2
@@ -163,5 +162,14 @@ document.addEventListener("keydown", async (event) => {
             actWord.push(event.key);
         }
     }
-    console.log(actWord.join(''));
+    //console.log(actWord.join(''));
 });
+
+let submitErrorMessage = document.createElement("p");
+submitErrorMessage.innerHTML = 'Non so ancora inviare mail di feedback, per il momento tieniti la tua opinione per te!';
+submitErrorMessage.style.height = "1.5rem";
+submitErrorMessage.style.fontSize = "0.8rem";
+submitErrorMessage.style.color = "beige";
+
+document.getElementById("submitFeedback").addEventListener("click", () => document.querySelector("form").appendChild(submitErrorMessage));
+

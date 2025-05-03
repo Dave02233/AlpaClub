@@ -422,6 +422,122 @@ section#mapSection{
     
 }
 
+#formContainer{
+    padding: 0;
+    margin: 0;
+    
+    height: 27rem;
+
+    justify-items: center;
+    align-content: center;
+
+    background-image: url(./Risorse/images/Paesaggio.jpg);
+    background-size: cover;
+    background-position: center;
+
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-content: space-evenly;
+
+        gap: 0.8rem;
+
+        max-height: 100%;
+        width: 70%;
+        height: auto;
+
+        justify-content: center;
+        align-items: center;
+
+        background-color: rgba(182, 179, 125, 0.6);
+        backdrop-filter: blur(6px);
+        /*offsetx offset y raggioSfuocatura Diffusione Colore*/
+        box-shadow: 0 0 10px 1px beige;
+        
+        color: antiquewhite !important;
+
+        border-radius: 1.5rem;
+
+        padding: 1rem;
+        
+        section{
+            padding: 0;
+            margin: 0;
+
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+
+            background-color: transparent !important;
+           
+        }
+
+        h1{
+            margin: 0;
+            padding: 0;
+
+            font-size: 2rem;
+        }
+        label{
+            font-size: 1rem;
+        }
+        input, textarea{
+            width: 50%;
+            max-width: 98%;
+            min-height: 1rem;
+            max-height: 5rem;
+
+            font-size: 0.5rem;
+            
+            margin: 0.2rem;
+
+            border-radius: 4px;
+            border: none;
+        }
+
+        #submitFeedback{
+            width: 100%;
+
+            font-size: 0.7rem;
+            color: brown;
+            font-weight: 800;
+
+            border-radius: 10px;
+
+            transition: all 0.3s ease-in-out;
+        }
+
+        #submitFeedback:hover{
+            width: 100%;
+
+            color: antiquewhite;
+            background-color: brown;
+
+        }
+
+
+    }
+
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 1400px) {
     html{
         font-size: 28px ;
@@ -457,6 +573,13 @@ section#mapSection{
         background-color: inherit;
         color: rgb(232, 70, 70);
         text-shadow: none;
+    }
+
+    #submitFeedback:hover{
+
+        color: brown;
+        background-color: antiquewhite;
+
     }
 
 }
