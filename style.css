@@ -427,9 +427,10 @@ section#mapSection{
     margin: 0;
     
     height: 27rem;
+    display: flex;
 
-    justify-items: center;
-    align-content: center;
+    justify-content: center;
+    align-items: center;
 
     background-image: url(./Risorse/images/Paesaggio.jpg);
     background-size: cover;
