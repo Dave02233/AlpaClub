@@ -195,7 +195,7 @@ section{
         }
 
         p{
-            overflow: scroll;
+            overflow: hidden;
 
             width: 30%;
             padding: 0.5rem;
