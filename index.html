@@ -18,6 +18,21 @@
 
 </head>
 <body>
+
+    <header>
+        <button id="sideBarButton" onclick="toggleSideNav()"></button>
+        <h1 id="mainTitle">Alpa Club</h1>
+    </header>
+    <nav id="navBar">
+        <ul>
+            <li><a href="#nostri-alpaca" onclick="removeSideNav()">I Nostri Alpaca</a></li>
+            <li><a href="#spazio-famiglie" onclick="removeSideNav()">Spazio Famiglie</a></li>
+            <li><a href="#prodotti" onclick="removeSideNav()">Prodotti</a></li>
+            <li><a href="#galleria" onclick="removeSideNav()">Galleria</a></li>
+            <li><a href="#club" onclick="removeSideNav()">Club</a></li>
+            <li><a href="#dove-siamo" onclick="removeSideNav()">Dove Siamo</a></li>
+        </ul>
+    </nav>
     <nav class = "side-nav hidden">
         <button onclick="removeSideNav()">X</button>
         <ul>
@@ -31,24 +46,10 @@
 
         <p>In onore di Daniele che non si fa vedere da mesi</p>
     </nav>
-    <header>
-        <h1>Alpa Club</h1>
-    </header>
-    <nav id="navBar">
-        <ul>
-            <li><a href="#nostri-alpaca" onclick="removeSideNav()">I Nostri Alpaca</a></li>
-            <li><a href="#spazio-famiglie" onclick="removeSideNav()">Spazio Famiglie</a></li>
-            <li><a href="#prodotti" onclick="removeSideNav()">Prodotti</a></li>
-            <li><a href="#galleria" onclick="removeSideNav()">Galleria</a></li>
-            <li><a href="#club" onclick="removeSideNav()">Club</a></li>
-            <li><a href="#dove-siamo" onclick="removeSideNav()">Dove Siamo</a></li>
-        </ul>
-    </nav>
-
     <main>
         <section>
-            <h2>I Nostri Alpaca</h2>
-            <article id="nostri-alpaca">
+            <h2 id="nostri-alpaca">I Nostri Alpaca</h2>
+            <article>
                 <img src="./Risorse/images/AlpacaFieri.jpg" alt="Alpaca Fieri">
                 <p>I nostri alpaca sono animali docili, curiosi e affettuosi. Sono compagni ideali per una passeggiata rilassante nel parco naturale, perfetta per grandi e piccini.  
                 <span>L'accompagnamento con guida non è incluso nella tariffa base.</span></p>
@@ -137,7 +138,7 @@
         <p>Per informazioni e prenotazioni, contatta Michele Torrentino o Davide Cannistraro via email all'indirizzo <a href="mailto:info@LittleTorrent.it?subject=Prenotazione%20Visita%20&body=Buongiorno,%20vorrei%20prenotare%20una%20giornata%20nel%20vostro%20parco%20meraviglioso">info@LittleTorrent.it</a></p>
     </footer>
     <section id="formContainer">
-        <form id="form" method="POST">       <!--method="POST"-->
+        <form id="form" method="POST">
             <h1>Lascia un feedback!</h1>
             <section>
                 <label for="nome">Inserisci il tuo nome</label>
@@ -152,6 +153,5 @@
         </form>
     </section>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 </body>
 </html>

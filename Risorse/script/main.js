@@ -25,38 +25,62 @@ function reverseMapDisplay() {
 
 mapButton.addEventListener("click", reverseMapDisplay);
 
-//Toggle del side nav in base allo scroll nella pagina
+//Riduzione di height dell header e aggiunta del pulsante sidebar
+let headerSmallStatus = false;
 
-function toggleSideNav() {
+function showSideInHead() { 
     
-    let scrollPercent = (window.scrollY / document.documentElement.scrollHeight) * 100;
+    let header = document.querySelector('header');
+    let nextItemTopCoord = document.querySelector("#navBar").getBoundingClientRect().bottom;
+    let sideBarButton = document.querySelector("#sideBarButton");
 
-    let sideNav = document.querySelector(".side-nav");
-    
-    if (scrollPercent >= 3 && !sideNavClosedByUser) {
-        if (sideNav.classList.contains("hidden")) {
-            sideNav.classList.add("visible");
-            sideNav.classList.remove("hidden");
-        }
-    } else {
-        if (sideNav.classList.contains("visible")) {
-            sideNav.classList.add("hidden");
-            sideNav.classList.remove("visible");
-        }
+    if(nextItemTopCoord <= 0 && !headerSmallStatus) {
+        headerSmallStatus = true;
     }
 
-    if(scrollPercent < 3) {
-        sideNavClosedByUser = false;
-    }   
+    if(nextItemTopCoord > 0) {
+        headerSmallStatus = false;
+    }
+
+    if(headerSmallStatus) {
+        header.classList.add("small");
+        sideBarButton.style.display = ''; 
+        initHeaders();
+    }else{
+        header.classList.remove("small");
+        sideBarButton.style.display = 'none';
+        removeSideNav();
+        initHeaders();
+    }
+    
+}
+
+//Toggle del side nav in base allo scroll nella pagina
+function toggleSideNav() {
+
+    let mainTitle = document.querySelector('#mainTitle');
+    let sideNav = document.querySelector(".side-nav");
+    
+    if (sideNav.classList.contains("hidden")) {
+        sideNav.classList.add("visible");
+        sideNav.classList.remove("hidden");
+        mainTitle.classList.add("aside");
+    }else if (sideNav.classList.contains("visible")) {
+        sideNav.classList.add("hidden");
+        sideNav.classList.remove("visible");
+        mainTitle.classList.remove("aside");
+    }
     
 }
 
 //Rimuove la barra laterale, con pulsante di chiusura o gli altri presenti
 function removeSideNav() {
     let sideNav = document.querySelector(".side-nav");
+    let mainTitle = document.querySelector('#mainTitle');
 
     sideNav.classList.add("hidden");
     sideNav.classList.remove("visible");
+    mainTitle.classList.remove("aside");
     
     sideNavClosedByUser = true;
 }
@@ -98,7 +122,7 @@ setInterval(() => {
 }, 500);
 setInterval(() => lastScroll = window.scrollY, 750);
 
-window.addEventListener("scroll", toggleSideNav);
+window.addEventListener("scroll",  showSideInHead); //toggleSideNav
 
 
 //Secret word access
@@ -175,12 +199,10 @@ submitErrorMessage.style.color = "beige";
 document.getElementById("submitFeedback").addEventListener("click", () => document.querySelector("form").appendChild(submitErrorMessage));
 */
 
-
 //Invio mail con mail js
 document.getElementById('form').addEventListener('submit', function(event) {
 
     event.preventDefault(); //Impedisce il comportamento predefinito di un evento, in questo caso evita ricariacamento della pagina
-
     //console.log(this);
     
     emailjs.sendForm("service_dave_mailing", "template_avoe4p6", this, 'gg3F8WtBNKqr9Bobg')
@@ -194,3 +216,16 @@ document.getElementById('form').addEventListener('submit', function(event) {
     
     document.getElementById('formContainer').style.display = 'none';
 });
+
+function initHeaders() {
+    let headers = document.querySelectorAll("h2");
+    let titleBottom = document.querySelector("header").getBoundingClientRect().height;
+
+    console.log(titleBottom);
+    headers.forEach(element => {
+        element.style.top = titleBottom.toString() + "px"; //Due ore a capire che doveva essere una stringa 
+        console.log(element.style.top);
+    })
+}
+
+initHeaders();

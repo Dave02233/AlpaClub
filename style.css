@@ -24,11 +24,64 @@ video{
     border: 1px solid gold;
 }
 
+header{
+    display: grid;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(10,1fr);
+
+    max-height: 7rem;
+
+
+    justify-items: center;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1;
+
+    background-color: rgb(255, 166, 0);
+}
+
+header.small{
+    h1{
+        font-size: 2.2rem !important;
+    }
+}
+
+header button{
+
+    grid-area: 1 / 1 / 2 / 2;
+
+    width: 2rem;
+    height: 2rem;
+
+    background-image: url(./Risorse/images/MenuIcon.png);
+    background-size: cover;
+    background-color: transparent;
+
+    border: none;
+
+    transition: all 0.5s ease-in-out;
+}
+
+header button:hover{
+    width: 2.5rem;
+    height: 2.5rem;
+
+    cursor: pointer;
+}
+
 header h1{
     padding: 0;
     margin: 0;
 
-    background-color: rgb(255, 166, 0);
+    grid-area: 1 / 2 / 2 / 10;
+    
     color:chocolate;
 
     text-shadow: 1px 2px 1px rgb(142, 34, 34);
@@ -44,11 +97,35 @@ header h1{
     border-bottom: 1px solid gold;
 }
 
-header h1:hover{
-    color:rgba(210, 105, 30, 0.567);
-    text-shadow: -1px -2px 1px rgb(82, 24, 24);
+header h1.aside{
+    grid-area: 1 / 4 / 2 / 10;
 }
 
+
+header h1:hover{
+    animation: textShadow 3s ease;
+}
+
+@keyframes textShadow { /*Definizione sequenza di animazioni*/
+    0% {
+        text-shadow: 1px 2px 1px rgb(142, 34, 34);
+    }
+    20% {
+        text-shadow: 10px 6px 1px rgb(82, 24, 24);
+    }
+    40% {
+        text-shadow: 8px -2px 6px rgb(82, 24, 24);
+    }
+    60% {
+        text-shadow: -8px 2px 2px rgb(82, 24, 24);
+    }
+    80% {
+        text-shadow: -1px -4px 4px rgb(82, 24, 24);
+    }
+    100% {
+        text-shadow: 1px 2px 1px rgb(142, 34, 34);;
+    }
+}
 
 nav{
     background-color: beige;
@@ -183,13 +260,19 @@ section{
 }
 
 section h2{
+    position: sticky;
+
+    left: 0;
+
     margin: 0;
-    padding: 0.5rem;
+    padding: 0 0.5rem;
 
     text-align: left;
 
     background-color: brown;
     color: beige;
+
+    border-bottom: 1px solid gold;
 
     font-family: Roboto, sans-serif;
     font-size: 2rem;
@@ -238,18 +321,26 @@ footer {
     }
 }
 
+
+
 .MapHeadContainer{
     display: inline-flex;
     flex-direction: row;
 
     width: 100%;
+    overflow: hidden;
 
     justify-content: space-between;
     align-items: center;
 
+
     background-color: brown;
 
     border-bottom: 3px solid gold;
+
+    h2{
+        border: none;
+    }
 
     button{
         border: none;
@@ -258,7 +349,7 @@ footer {
         text-justify: center;
 
         padding: 0;
-        margin: 0.5rem 0.5rem;
+        margin-right: 1rem;
 
         font-size: 1rem;
         font-weight: 900;
@@ -284,6 +375,8 @@ footer {
 
 section#mapSection{
     font-size: 0;
+    padding: 0;
+    margin: 0;
 }
 
 #mappa{
@@ -317,7 +410,7 @@ section#mapSection{
     height: 100%;
     width: 20%;
     top: 0;
-    left: 0;
+    left: 0; 
 
     background-color: rgba(238, 186, 74, 0.7);
     backdrop-filter: blur(10px);
@@ -382,7 +475,8 @@ section#mapSection{
             font-family: "Domine";
 
             /*color: rgb(232, 70, 70);*/
-            color: rgb(131, 31, 31);
+            color: rgb(201, 42, 42);
+            text-shadow: 1px 0 rgb(239, 189, 189);
 
             font-size: 1rem;
             font-weight: 900;
@@ -515,6 +609,7 @@ section#mapSection{
             border-radius: 10px;
 
             transition: all 0.3s ease-in-out;
+            
         }
 
         #submitFeedback:hover{
@@ -522,26 +617,12 @@ section#mapSection{
 
             color: antiquewhite;
             background-color: brown;
-
+            
         }
 
-
     }
-
-
-    
+ 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 @media only screen and (min-width: 1400px) {
@@ -596,10 +677,6 @@ section#mapSection{
     }
 
 }
-
-
-
-
 
 
 
