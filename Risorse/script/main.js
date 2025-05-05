@@ -185,10 +185,10 @@ document.getElementById('form').addEventListener('submit', function(event) {
 
     emailjs.sendForm("service_dave_mailing", "template_avoe4p6", this, 'gg3F8WtBNKqr9Bobg')
     
-        .then(() => {
-            alert('Sent!');
+        .then(() => { 
+            alert('Inviato!'); //Promise di sendForm risolta con successo
         }, (err) => {
-            alert(JSON.stringify(err));
+            alert(JSON.stringify(err)); //Errore nell'invio del form, conversione in stringa JSON per essere mostrato nell'alert
         });
 
 });
