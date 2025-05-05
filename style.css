@@ -396,6 +396,8 @@ section#mapSection{
         width: 100%;
         height: 100%;
 
+        padding: 2px;
+
         word-wrap: break-word;
 
         margin: 0;
