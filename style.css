@@ -497,7 +497,7 @@ section#mapSection{
             min-height: 1rem;
             max-height: 5rem;
 
-            font-size: 1rem;
+            font-size: 0.8rem;
             
             margin: 0.2rem;
 
@@ -595,10 +595,6 @@ section#mapSection{
         font-size: 13px ;
     }
 
-    .side-nav.visible{
-        width: 40%;
-        
-    }
 }
 
 
