@@ -182,7 +182,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault(); //Impedisce il comportamento predefinito di un evento, in questo caso evita ricariacamento della pagina
 
     //console.log(this);
-
+    
     emailjs.sendForm("service_dave_mailing", "template_avoe4p6", this, 'gg3F8WtBNKqr9Bobg')
     
         .then(() => { 
@@ -190,5 +190,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
         }, (err) => {
             alert(JSON.stringify(err)); //Errore nell'invio del form, conversione in stringa JSON per essere mostrato nell'alert
         });
-
+    
+    
+    document.getElementById('formContainer').style.display = 'none';
 });
