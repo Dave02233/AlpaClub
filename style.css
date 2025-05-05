@@ -1,5 +1,5 @@
 *{
-    transition: all 0.7s ease-in-out;
+    /*transition: all 0.7s ease-in-out;*/
 }
 
 html {
@@ -13,6 +13,10 @@ body {
 
 main{
     background-color: beige !important;
+}
+
+p, main, section{
+    transition: all 0.7s ease-in-out ;
 }
 
 video{
@@ -54,7 +58,6 @@ header.small{
 }
 
 header button{
-
     grid-area: 1 / 1 / 2 / 2;
 
     width: 2rem;
@@ -84,7 +87,7 @@ header h1{
     
     color:chocolate;
 
-    text-shadow: 1px 2px 1px rgb(142, 34, 34);
+    text-shadow: 0.02rem 0.08rem 0.02rem rgb(142, 34, 34);
 
     text-align: center;
 
@@ -108,7 +111,7 @@ header h1:hover{
 
 @keyframes textShadow { /*Definizione sequenza di animazioni*/
     0% {
-        text-shadow: 1px 2px 1px rgb(142, 34, 34);
+        text-shadow: 1px 1px 1px rgb(142, 34, 34);
     }
     20% {
         text-shadow: 10px 6px 1px rgb(82, 24, 24);
@@ -123,7 +126,7 @@ header h1:hover{
         text-shadow: -1px -4px 4px rgb(82, 24, 24);
     }
     100% {
-        text-shadow: 1px 2px 1px rgb(142, 34, 34);;
+        text-shadow: 1px px 1px rgb(142, 34, 34);;
     }
 }
 
@@ -192,6 +195,7 @@ section{
         }
 
         p{
+            overflow: scroll;
 
             width: 30%;
             padding: 0.5rem;
@@ -637,6 +641,13 @@ section#mapSection{
     }
 }
 
+@media only screen and (max-width: 700px) {
+    header h1{
+        font-size:  4rem;
+    }
+
+}
+
 @media only screen and (max-width: 570px) {
     html{
         font-size: 15px ;
@@ -668,6 +679,8 @@ section#mapSection{
         background-color: antiquewhite;
 
     }
+
+
 
 }
 
