@@ -165,6 +165,7 @@ document.addEventListener("keydown", async (event) => {
     //console.log(actWord.join(''));
 });
 
+/*
 let submitErrorMessage = document.createElement("p");
 submitErrorMessage.innerHTML = 'Non so ancora inviare mail di feedback, per il momento tieniti la tua opinione per te!';
 submitErrorMessage.style.height = "1.5rem";
@@ -172,4 +173,22 @@ submitErrorMessage.style.fontSize = "0.8rem";
 submitErrorMessage.style.color = "beige";
 
 document.getElementById("submitFeedback").addEventListener("click", () => document.querySelector("form").appendChild(submitErrorMessage));
+*/
 
+
+//Invio mail con mail js
+document.getElementById('form').addEventListener('submit', function(event) {
+
+    event.preventDefault(); //Impedisce il comportamento predefinito di un evento, in questo caso evita ricariacamento della pagina
+
+    //console.log(this);
+
+    emailjs.sendForm("service_dave_mailing", "template_avoe4p6", this, 'gg3F8WtBNKqr9Bobg')
+    
+        .then(() => {
+            alert('Sent!');
+        }, (err) => {
+            alert(JSON.stringify(err));
+        });
+
+});

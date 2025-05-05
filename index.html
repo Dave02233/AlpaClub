@@ -137,7 +137,7 @@
         <p>Per informazioni e prenotazioni, contatta Michele Torrentino o Davide Cannistraro via email all'indirizzo <a href="mailto:info@LittleTorrent.it?subject=Prenotazione%20Visita%20&body=Buongiorno,%20vorrei%20prenotare%20una%20giornata%20nel%20vostro%20parco%20meraviglioso">info@LittleTorrent.it</a></p>
     </footer>
     <section id="formContainer">
-        <form>       <!--method="POST"-->
+        <form id="form" method="POST">       <!--method="POST"-->
             <h1>Lascia un feedback!</h1>
             <section>
                 <label for="nome">Inserisci il tuo nome</label>
@@ -146,9 +146,12 @@
             <section>
                 <label for="feedbackMessage">Messaggio di feedback</label>
                 <textarea name="feedbackMessage" id="feedbackMessage" rows="3" cols="20" required minlength="3" maxlength="200" placeholder="Descrivi cosa miglioreresti oppure cosa ti è piaciuto"></textarea>
+                <input type="hidden" name="email" value="2kw26pe22@mozmail.com">
             </section>
-            <input id="submitFeedback" type="button" value="Submit"> <!--Ho tolto submit per ora per aggiungere l'event-->
+            <input id="submitFeedback" type="submit" value="Submit"> <!--Ho tolto submit per ora per aggiungere l'event-->
         </form>
     </section>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 </body>
 </html>
