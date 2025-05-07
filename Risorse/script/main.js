@@ -221,10 +221,10 @@ function initHeaders() {
     let headers = document.querySelectorAll("h2");
     let titleBottom = document.querySelector("header").getBoundingClientRect().height;
 
-    console.log(titleBottom);
+    //console.log(titleBottom);
     headers.forEach(element => {
         element.style.top = titleBottom.toString() + "px"; //Due ore a capire che doveva essere una stringa 
-        console.log(element.style.top);
+        //console.log(element.style.top);
     })
 }
 
