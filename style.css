@@ -533,7 +533,7 @@ section#mapSection{
     padding: 0;
     margin: 0;
     
-    height: 27rem;
+    height: 30rem;
     display: flex;
 
     justify-content: center;
@@ -630,6 +630,75 @@ section#mapSection{
 
     }
  
+}
+
+div.variableGrid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-auto-flow: row;
+    grid-auto-columns: 20rem;
+
+    background-image: url(./Risorse/images/Paesaggio.jpg);
+    background-size: cover;
+
+    height: 25rem;
+
+    padding: 3rem;
+    
+    form.gridItem {
+        display: flex;
+        flex-direction: column;
+
+        gap: 1rem;
+
+        justify-content: space-evenly;
+        align-items: center;
+        
+        background-color: rgba(214, 110, 36, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+
+        input.itemTitle {
+            width: 80%;
+            height: 10%;
+
+            padding: 0 0.5rem;
+
+            border-radius: 10px;
+
+            justify-content: center;
+
+            font-size: 1.2rem;
+        }
+
+        textarea.itemText {
+            width: 80%;
+            height: 60%;
+
+            padding: 0.5rem;
+
+            border-radius: 10px;
+
+            resize: none;
+
+            justify-content: center;
+
+            font-size: 0.8rem;
+
+        }
+
+        input.itemSubmit {
+            width: 80%;
+
+            padding: 0 0.5rem;
+
+            border-radius: 10px;
+
+            font-size: 1rem;
+
+
+        }
+    }
 }
 
 
