@@ -88,7 +88,7 @@ function removeSideNav() {
     sideNav.classList.add("hidden");
     sideNav.classList.remove("visible");
     mainTitle.classList.remove("aside");
-    articleHeaders.forEach(element => element.style.textAlign = '');
+    articleHeaders.forEach(element => element.style.textAlign = ''); 
     
     sideNavClosedByUser = true;
 }
