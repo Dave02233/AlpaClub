@@ -58,6 +58,8 @@ function showSideInHead() {
 //Toggle del side nav in base allo scroll nella pagina
 function toggleSideNav() {
 
+    let articleHeaders = document.querySelectorAll('h2');
+    console.log(articleHeaders);
     let mainTitle = document.querySelector('#mainTitle');
     let sideNav = document.querySelector(".side-nav");
     
@@ -65,10 +67,14 @@ function toggleSideNav() {
         sideNav.classList.add("visible");
         sideNav.classList.remove("hidden");
         mainTitle.classList.add("aside");
+        //articleHeaders.forEach(element => element.classList.remove("aside"));
+        articleHeaders.forEach(element => element.style.textAlign = 'right');
     }else if (sideNav.classList.contains("visible")) {
+        console.log('qui')
         sideNav.classList.add("hidden");
         sideNav.classList.remove("visible");
         mainTitle.classList.remove("aside");
+        articleHeaders.forEach(element => element.style.textAlign = '');
     }
     
 }
@@ -77,10 +83,12 @@ function toggleSideNav() {
 function removeSideNav() {
     let sideNav = document.querySelector(".side-nav");
     let mainTitle = document.querySelector('#mainTitle');
+    let articleHeaders = document.querySelectorAll('h2');
 
     sideNav.classList.add("hidden");
     sideNav.classList.remove("visible");
     mainTitle.classList.remove("aside");
+    articleHeaders.forEach(element => element.style.textAlign = '');
     
     sideNavClosedByUser = true;
 }
