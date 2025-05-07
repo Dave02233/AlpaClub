@@ -237,3 +237,38 @@ function initHeaders() {
 }
 
 initHeaders();
+
+
+
+//Auto Grid Cards
+
+const elements = [];
+const GridForm = document.querySelector(".variableGrid");
+const FirstGridItem = document.querySelector(".gridItem")
+
+document.querySelector("#gridForm").addEventListener('submit', form => {
+    form.preventDefault();
+
+    const formData = new FormData(form.target); //new crea un istanza di un oggetto collegato ad un costruttore, è una funzione (o una classe) progettata per creare oggetti
+    const itemTitle = formData.get("itemTitle");
+    const itemText = formData.get("itemText");
+
+    console.log(itemTitle, itemText);
+
+    let child = document.createElement('form');
+    child.innerHTML = `        
+            <input class="itemTitle" value="${itemTitle}" readonly>
+            <textarea class="itemText" readonly>${itemText}</textarea>
+            <input type='submit'
+            `
+    child.querySelectorAll("input, textarea").forEach(element => {
+        element.style.backgroundColor = "rgb(180, 178, 178)";
+        element.style.color = "white";
+    });
+    child.classList.add('gridItem');
+    
+    GridForm.append(child);
+
+    FirstGridItem.querySelectorAll("#itemTitle, #itemText").forEach(element => element.value ='');
+    
+});

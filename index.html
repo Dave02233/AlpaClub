@@ -138,11 +138,12 @@
         <p>Per informazioni e prenotazioni, contatta Davide via email all'indirizzo <a href="mailto:info@dave.it?subject=Prenotazione%20Visita%20&body=Buongiorno,%20vorrei%20prenotare%20una%20giornata%20nel%20vostro%20parco%20meraviglioso">info@dave.it</a></p>
     </footer>
     <div class="variableGrid">
-        <form class="gridItem" id="gridForm1" method="POST">
-            <input class="itemTitle" id="itemTitle1" pattern="[a-zA-Z\s]+" required>
-            <textarea class="itemText" id="itemText1" pattern="[a-zA-Z\s]+" minlength="1" maxlength="20" required></textarea>
-            <input class="itemSubmit" type="submit" value="Create">
+        <form class="gridItem" id="gridForm" method="POST">
+            <input class="itemTitle" id="itemTitle" name="itemTitle" pattern="[a-zA-Z\s]+" minlength="1" maxlength="20" placeholder="Titolo" required>
+            <textarea class="itemText" id="itemText" name="itemText" pattern="[a-zA-Z\s]+" minlength="1" maxlength="525" placeholder="Messaggio" required></textarea>
+            <input class="itemSubmit" type="submit" value="Crea">
         </form>
+
     </div>
     <section id="formContainer">
         <form id="form" method="POST">
