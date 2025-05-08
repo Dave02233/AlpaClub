@@ -130,7 +130,7 @@
                 <h2 id="dove-siamo">Dove Siamo</h2>
                 <button id="showMap">+</button>
             </div>
-            <iframe id="mappa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7780.4791215629475!2d9.180635536099377!3d45.83243412218251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47869fd923a629e7%3A0x96e9e84793f17e20!2sMonte%20Bolettone!5e0!3m2!1sit!2sit!4v1745011543865!5m2!1sit!2sit" width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe id="mappa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2676.802910218942!2d9.148853755998694!3d45.6304090458003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786bdf3a0cc0595%3A0x77dc77676918982b!2sParco%20Borromeo!5e0!3m2!1sit!2sit!4v1746726629095!5m2!1sit!2sit" width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
     </main>
     <footer>
@@ -139,11 +139,16 @@
     </footer>
     <div class="variableGrid">
         <form class="gridItem" id="gridForm" method="POST">
-            <input class="itemTitle" id="itemTitle" name="itemTitle" pattern="[a-zA-Z\s]+" minlength="1" maxlength="20" placeholder="Titolo" required>
+            <input class="itemTitle" id="itemTitle" name="itemTitle" pattern="[a-zA-Z\s]+" minlength="1" maxlength="22" placeholder="Nome" required>
             <textarea class="itemText" id="itemText" name="itemText" pattern="[a-zA-Z\s]+" minlength="1" maxlength="525" placeholder="Messaggio" required></textarea>
+            <label for="importo" id="label">Seleziona l'importo desiderato: </label>
+            <select name="importo" id="importo">
+                <option value="100€">100€</option>
+                <option value="50€">50€</option>
+                <option value="20€">20€</option>
+            </select>  
             <input class="itemSubmit" type="submit" value="Crea">
         </form>
-
     </div>
     <section id="formContainer">
         <form id="form" method="POST">
@@ -157,7 +162,7 @@
                 <textarea name="feedbackMessage" id="feedbackMessage" rows="3" cols="20" required minlength="3" maxlength="200" placeholder="Descrivi cosa miglioreresti oppure cosa ti è piaciuto"></textarea>
                 <input type="hidden" name="email" value="2kw26pe22@mozmail.com">
             </section>
-            <input id="submitFeedback" type="submit" value="Submit"> <!--Ho tolto submit per ora per aggiungere l'event-->
+            <input id="submitFeedback" type="submit" value="Submit">
         </form>
     </section>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>

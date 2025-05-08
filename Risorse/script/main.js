@@ -242,9 +242,50 @@ initHeaders();
 
 //Auto Grid Cards
 
+function modifyObjProperties (item = document.querySelectorAll('p'), propertyName = "backgroundColor, color", value = "black, white") {
+    let properties = [];
+    let values = [];
+    const indexNameComma = propertyName.indexOf(",") !== -1;
+    const indexValueComma = value.indexOf(",") !== -1;
+    const CommaError = (indexNameComma && !indexValueComma)||(!indexNameComma && indexValueComma)||(!indexNameComma && !indexValueComma);
+    console.log(CommaError, indexNameComma, indexValueComma)
+
+    if(!CommaError){ 
+        if(item.length === undefined){
+            if(propertyName && value) {
+                item.style[propertyName] = value;
+            }else{
+                console.log('cazzo hai combinato coi parametri');
+            }
+        }else{
+            item.forEach(element => element.style[propertyName] = value);
+        }
+    }else{
+        if(indexNameComma && !indexValueComma){ //Più proprietà, un solo valore
+            properties = propertyName.split(", ");
+            for (let i = 0; i < item.length; i++) { //Ciclo gli item
+                for (let c = 0; c < properties.length; c++) { //Ciclo le proprietà
+                    item[i].style[properties[c]] = value; 
+                }
+            }
+        }else if(!indexNameComma && !indexValueComma) {
+            if(item.length === undefined) {
+                item.style[propertyName] = value;
+            }else{
+                item.forEach(element => element.style[propertyName] = value);
+            }
+        }else{
+            console.log('Che cazzo combini')
+        }
+    }
+}
+
+modifyObjProperties(document.querySelectorAll('h2'), "backgroundColor", "black");
+
+
 const elements = [];
 const GridForm = document.querySelector(".variableGrid");
-const FirstGridItem = document.querySelector(".gridItem")
+const FirstGridItem = document.querySelector(".gridItem");
 
 document.querySelector("#gridForm").addEventListener('submit', form => {
     form.preventDefault();
@@ -252,20 +293,22 @@ document.querySelector("#gridForm").addEventListener('submit', form => {
     const formData = new FormData(form.target); //new crea un istanza di un oggetto collegato ad un costruttore, è una funzione (o una classe) progettata per creare oggetti
     const itemTitle = formData.get("itemTitle");
     const itemText = formData.get("itemText");
+    const giftValue = formData.get("importo");
 
     console.log(itemTitle, itemText);
 
     let child = document.createElement('form');
     child.innerHTML = `        
             <input class="itemTitle" value="${itemTitle}" readonly>
-            <textarea class="itemText" readonly>${itemText}</textarea>
-            <input type='submit'
+            <textarea class="itemText" readonly>${itemText}\n${itemTitle} presenta questa gift all'Alpa Club per ottenere ${giftValue} di sconto sulla tua prossima avventura!</textarea>
             `
     child.querySelectorAll("input, textarea").forEach(element => {
-        element.style.backgroundColor = "rgb(180, 178, 178)";
+        element.style.backgroundColor = "chocolate";
         element.style.color = "white";
+        element.style.border = "none";
     });
     child.classList.add('gridItem');
+    child.style.backgroundColor = "brown";
     
     GridForm.append(child);
 
