@@ -243,44 +243,57 @@ initHeaders();
 //Auto Grid Cards
 
 function modifyObjProperties (item = document.querySelectorAll('p'), propertyName = "backgroundColor, color", value = "black, white") {
-    let properties = [];
-    let values = [];
+    const properties = propertyName.split(", ");
+    const values = value.split(", ");
     const indexNameComma = propertyName.indexOf(",") !== -1;
     const indexValueComma = value.indexOf(",") !== -1;
-    const CommaError = (indexNameComma && !indexValueComma)||(!indexNameComma && indexValueComma)||(!indexNameComma && !indexValueComma);
-    console.log(CommaError, indexNameComma, indexValueComma)
+    const commaError = (indexNameComma && !indexValueComma)||(!indexNameComma && indexValueComma)||(!indexNameComma && !indexValueComma);
+    const lengthMatch = properties.length === values.length;
 
-    if(!CommaError){ 
-        if(item.length === undefined){
-            if(propertyName && value) {
-                item.style[propertyName] = value;
-            }else{
-                console.log('cazzo hai combinato coi parametri');
+    //console.log(properties.length, values.length);
+    //console.log(commaError, indexNameComma, indexValueComma);
+
+    if(!commaError){ //Numero di proprietà e valori uguale
+
+        if(properties.length === 1 && values.length === 1){ //Singola proprietà e valore
+
+            item.style[propertyName] = value;
+
+        }else if(properties.length !== 1 && values.length !== 1 && lengthMatch){ //Più proprietà e più valori, numero uguale
+
+            if(item.length !== undefined) { //Singolo oggetto
+                for(let c = 0; c < properties.length; c++) {
+                    item.forEach(element => element.style[properties[c]] = values[c]);
+                }
+            }else{ //Più oggetti
+                for(let d = 0; d < properties.length; d++) {
+                    item.style[properties[d]] = values[d];
+                }
             }
-        }else{
-            item.forEach(element => element.style[propertyName] = value);
         }
-    }else{
+    }else{ //Numero di proprietà e valori discordante
         if(indexNameComma && !indexValueComma){ //Più proprietà, un solo valore
-            properties = propertyName.split(", ");
-            for (let i = 0; i < item.length; i++) { //Ciclo gli item
-                for (let c = 0; c < properties.length; c++) { //Ciclo le proprietà
+            for (let i = 0; i < item.length; i++) {
+                for (let c = 0; c < properties.length; c++) {
                     item[i].style[properties[c]] = value; 
                 }
             }
-        }else if(!indexNameComma && !indexValueComma) {
-            if(item.length === undefined) {
+        }else if(!indexNameComma && !indexValueComma) { //Una proprietà, un solo valore
+            if(item.length === undefined) { //Singolo oggetto
                 item.style[propertyName] = value;
-            }else{
+            }else{ //Più oggetti
                 item.forEach(element => element.style[propertyName] = value);
             }
-        }else{
-            console.log('Che cazzo combini')
         }
     }
 }
 
-modifyObjProperties(document.querySelectorAll('h2'), "backgroundColor", "black");
+//Esempio dell'utlizzo della funzione modifyObjProperties
+//modifyObjProperties(document.querySelector('h2'), "backgroundColor, color, fontSize", "black, white, 17px");
+//modifyObjProperties(document.querySelectorAll('h2'), "backgroundColor, fontSize", "black, 17px");
+//modifyObjProperties(document.querySelector('h2'), "backgroundColor", "black");
+//modifyObjProperties(document.querySelector('h2'), "backgroundColor, color, fontSize", "black, white, 45px");
+//modifyObjProperties(document.querySelectorAll('h2'), "backgroundColor", "black");
 
 
 const elements = [];
@@ -294,8 +307,9 @@ document.querySelector("#gridForm").addEventListener('submit', form => {
     const itemTitle = formData.get("itemTitle");
     const itemText = formData.get("itemText");
     const giftValue = formData.get("importo");
+    const image = formData.get("image");
 
-    console.log(itemTitle, itemText);
+    //console.log(formData);
 
     let child = document.createElement('form');
     child.innerHTML = `        
@@ -303,13 +317,26 @@ document.querySelector("#gridForm").addEventListener('submit', form => {
             <textarea class="itemText" readonly>${itemText}\n${itemTitle} presenta questa gift all'Alpa Club per ottenere ${giftValue} di sconto sulla tua prossima avventura!</textarea>
             `
     child.querySelectorAll("input, textarea").forEach(element => {
-        element.style.backgroundColor = "chocolate";
-        element.style.color = "white";
-        element.style.border = "none";
+        modifyObjProperties(element, "backgroundColor, color, border, backdropFilter", "chocolate, white, none, blur(5px)");
+        element.style.backgroundColor="rgba(210, 105, 30, 0.6)"; //Per qualche motivo non riesco a scrivere un rgba nella mia funzione
     });
+
     child.classList.add('gridItem');
+    switch(image) {
+        case "AlpaLand":
+            child.style.backgroundImage = "url(./Risorse/images/AlpaLand.jpg)"
+            break;
+        case "Mountains":
+            child.style.backgroundImage = "url(./Risorse/images/Mountains.jpg)"
+            break;
+        case "Park":
+            child.style.backgroundImage = "url(./Risorse/images/Park.jpg)"
+            break;
+    }
+    child.style.backgroundSize = "cover";
     child.style.backgroundColor = "brown";
-    
+
+
     GridForm.append(child);
 
     FirstGridItem.querySelectorAll("#itemTitle, #itemText").forEach(element => element.value ='');
