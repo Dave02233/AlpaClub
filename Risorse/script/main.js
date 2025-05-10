@@ -314,7 +314,7 @@ document.querySelector("#gridForm").addEventListener('submit', form => {
     let child = document.createElement('form');
     child.innerHTML = `        
             <input class="itemTitle" value="${itemTitle}" readonly>
-            <textarea class="itemText" readonly>${itemText}\n${itemTitle} presenta questa gift all'Alpa Club per ottenere ${giftValue} di sconto sulla tua prossima avventura!</textarea>
+            <textarea class="itemText" readonly>${itemText}\n${itemTitle} presenta questa gift all'Alpa Club per ottenere ${giftValue}€ di sconto sulla tua prossima avventura!</textarea>
             `
     child.querySelectorAll("input, textarea").forEach(element => {
         modifyObjProperties(element, "backgroundColor, color, border, backdropFilter", "chocolate, white, none, blur(5px)");
@@ -342,3 +342,9 @@ document.querySelector("#gridForm").addEventListener('submit', form => {
     FirstGridItem.querySelectorAll("#itemTitle, #itemText").forEach(element => element.value ='');
     
 });
+
+setInterval(() => {
+    if(document.querySelector(".variableGrid").childElementCount > 1) {
+        document.querySelector("#checkOutButton").disabled = false;
+    }  
+}, 2000)

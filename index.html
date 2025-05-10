@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="AlpacaIcon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./Risorse/stili/styleIndex.css">
+    <link rel="shortcut icon" href="./Risorse/images/AlpacaIcon.ico" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +31,7 @@
             <li><a href="#galleria" onclick="removeSideNav()">Galleria</a></li>
             <li><a href="#club" onclick="removeSideNav()">Club</a></li>
             <li><a href="#dove-siamo" onclick="removeSideNav()">Dove Siamo</a></li>
+            <li><a href="#gift-card" onclick="removeSideNav()">GiftCard</a></li>
         </ul>
     </nav>
     <nav class = "side-nav hidden">
@@ -42,6 +43,7 @@
             <a href="#galleria" onclick="removeSideNav()"><li>Galleria</li></a>
             <a href="#club" onclick="removeSideNav()"><li>Club</li></a>
             <a href="#dove-siamo" onclick="removeSideNav()"><li>Dove Siamo</li></a>
+            <a href="#gift-card" onclick="removeSideNav()"><li>Gift Card</li></a>
         </ul>
 
         <p>In onore di Daniele che non si fa vedere da mesi</p>
@@ -138,16 +140,16 @@
         <p>Per informazioni e prenotazioni, contatta Davide via email all'indirizzo <a href="mailto:info@dave.it?subject=Prenotazione%20Visita%20&body=Buongiorno,%20vorrei%20prenotare%20una%20giornata%20nel%20vostro%20parco%20meraviglioso">info@dave.it</a></p>
     </footer>
     <div class="VariableGridContainer">
-        <h2>Gift Card</h2>
+        <h2 id="gift-card">Gift Card</h2>
         <div class="variableGrid">
             <form class="gridItem" id="gridForm" method="POST">
                 <input class="itemTitle" id="itemTitle" name="itemTitle" pattern="[a-zA-Z\s]+" minlength="1" maxlength="22" placeholder="Nome" required>
                 <textarea class="itemText" id="itemText" name="itemText" pattern="[a-zA-Z\s]+" minlength="1" maxlength="525" placeholder="Messaggio" required></textarea>
                 <label for="importo" id="label">Seleziona l'importo desiderato: </label>
                 <select name="importo" id="importo">
-                    <option value="100€">100€</option>
-                    <option value="50€">50€</option>
-                    <option value="20€">20€</option>
+                    <option value="100">100€</option>
+                    <option value="50">50€</option>
+                    <option value="20">20€</option>
                 </select>  
                 <label for="image">Seleziona un immagine di sfondo:</label>
                 <select name="image" id="image">
@@ -158,6 +160,7 @@
                 <input class="itemSubmit" type="submit" value="Crea">
             </form>
         </div>
+        <a href="./checkout.html"><button id="checkOutButton" disabled>Checkout</button></a>
     </body>
     <section id="formContainer">
         <form id="form" method="POST">

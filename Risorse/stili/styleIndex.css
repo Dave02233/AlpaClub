@@ -60,7 +60,7 @@ header button{
     width: 2rem;
     height: 2rem;
 
-    background-image: url(./Risorse/images/MenuIcon.png);
+    background-image: url(../images/MenuIcon.png);
     background-size: cover;
     background-color: transparent;
 
@@ -455,7 +455,7 @@ section#mapSection{
         padding: 0;
         margin: 0;
 
-        grid-area: 2 / 1 / 9 / 1;
+        grid-area: 2 / 1 / 10 / 1;
 
         li{
             transition: all 0.2s ease-in;
@@ -536,7 +536,7 @@ section#mapSection{
     justify-content: center;
     align-items: center;
 
-    background-image: url(./Risorse/images/Paesaggio.jpg);
+    background-image: url(../images/Paesaggio.jpg);
     background-size: cover;
     background-position: center;
 
@@ -660,15 +660,15 @@ div.variableGrid {
     grid-auto-flow: column;
     grid-auto-columns: 20rem;
 
-    background-image: url(./Risorse/images/PaesaggioBello.jpg);
+    background-image: url(../images/PaesaggioBello.jpg);
 
     background-size: cover;
 
     border-bottom: 1px solid gold;
 
-    height: 22rem;
+    height: 19rem;
 
-    padding: 3rem;
+    padding: 1rem;
 
     gap: 1rem;
 
@@ -764,6 +764,30 @@ div.variableGrid {
         }
         
     }
+}
+
+#checkOutButton {
+    transition: all 0.3s ease-in-out;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 3rem;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+
+    background-color: chocolate;
+    color: gold;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+#checkOutButton:disabled {
+    background-color: rgb(194, 131, 86);
+    color: antiquewhite;
 }
 
 @media only screen and (min-width: 1400px) {

@@ -1,0 +1,118 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#main-title{
+    display: flex;
+    height: 2rem;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0.5rem;
+
+    background-color: #009999;
+
+    button{
+        background-image: url(../images/Quit.png);
+        background-size: contain;
+
+        min-width: 2rem;
+        min-height: 2rem;
+
+        border: none;
+        background-color: transparent;
+
+        cursor: pointer;
+    }
+
+    h1{
+        margin: 0;
+        padding: 0;
+        font-family: "Bungee Tint", serif;
+    }
+}
+
+#cartDetails {
+    justify-self: center;
+    margin-top: 3rem;
+
+    border-radius: 10px;
+    background-color: aquamarine;
+    padding: 1rem;
+
+    table{
+        /*border-collapse: collapse; /* Rimuove gli spazi tra le celle 
+        border-spacing: 0; /* Assicura che non ci sia spazio tra le celle */
+        
+        thead{
+            background-color: #009999;
+            font-size: 1.2rem;
+            th{
+                padding: 1rem;
+                font-family: 'Domine', serif;
+            }
+        }
+        tbody{
+            background-color: antiquewhite;
+
+            *{
+                border: 1px solid rgba(0, 0, 0, 0.121);
+                text-align: right;
+            }
+
+            .leftAlign{
+                text-align: left !important;
+            }
+
+            th, td{
+                padding: 0.3rem;
+            }
+        }
+        tfoot{
+            font-weight: 900;
+            font-size: 1rem;
+        }
+    }
+}
+
+#checkout{
+    display: flex;
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+
+    justify-content: center; 
+    align-items: center; 
+
+    padding: 0; 
+    margin-top: 1rem;
+    height: 3rem;
+
+    background-color: #009999;
+
+    text-decoration: none;
+
+    button{
+        transition: all 0.5s ease-in-out;
+
+        width: 50%;
+        height: 2rem;
+
+        font-family: 'Domine', sans-serif;
+        font-size: 1rem;
+
+        border: 1px solid #036b6b;
+        border-radius: 0.3rem;
+        box-shadow: 0.1rem 0.1rem 0.1rem rgb(255, 255, 255);
+    }
+    button:hover{
+        position: relative;
+        top: 0.1rem;
+        left: 0.1rem;
+        box-shadow: 0 0 0.15rem rgb(54, 52, 52);
+    }
+
+}
