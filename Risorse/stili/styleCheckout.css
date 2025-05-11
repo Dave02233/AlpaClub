@@ -15,6 +15,8 @@ body{
     background-color: #009999;
 
     button{
+        transition: all 0.3s ease-in-out;
+
         background-image: url(../images/Quit.png);
         background-size: contain;
 
@@ -22,9 +24,14 @@ body{
         min-height: 2rem;
 
         border: none;
+        border-radius: 0.3rem;
+
         background-color: transparent;
 
         cursor: pointer;
+    }
+    button:hover {
+        background-color: rgb(235, 187, 125);
     }
 
     h1{
@@ -41,6 +48,8 @@ body{
     border-radius: 10px;
     background-color: aquamarine;
     padding: 1rem;
+
+    table-layout: auto;
 
     table{
         /*border-collapse: collapse; /* Rimuove gli spazi tra le celle 
@@ -80,7 +89,7 @@ body{
 #checkout{
     display: flex;
     position: fixed;
-    bottom: 0;
+    bottom: 5rem;
 
     width: 100%;
 
@@ -107,12 +116,54 @@ body{
         border: 1px solid #036b6b;
         border-radius: 0.3rem;
         box-shadow: 0.1rem 0.1rem 0.1rem rgb(255, 255, 255);
+
+        cursor: pointer;
     }
     button:hover{
         position: relative;
         top: 0.1rem;
         left: 0.1rem;
         box-shadow: 0 0 0.15rem rgb(54, 52, 52);
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+    #checkout{
+        bottom: 0;
+    }
+}
+
+
+@media only screen and (min-width: 1400px) {
+    html{
+        font-size: 28px ;
+    }
+
+}
+
+@media only screen and (min-width: 2100px) {
+    html{
+        font-size: 32px ;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+    html{
+        font-size: 15px ;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    html{
+        font-size: 12px ;
+    }
+
+}
+
+@media only screen and (max-width: 370px) {
+    html{
+        font-size: 10px ;
     }
 
 }

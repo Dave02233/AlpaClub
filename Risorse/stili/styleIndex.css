@@ -33,7 +33,6 @@ header{
 
     max-height: 7rem;
 
-
     justify-items: center;
     align-items: center;
 
@@ -94,7 +93,6 @@ header h1{
 
     transition: all 0.4s ease-in-out;
 
-    border-bottom: 1px solid gold;
 }
 
 header h1.aside{
