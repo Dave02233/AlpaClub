@@ -23,7 +23,11 @@ function reverseMapDisplay() {
     }
 }
 
-mapButton.addEventListener("click", reverseMapDisplay);
+try {
+    mapButton.addEventListener("click", reverseMapDisplay);
+} catch (error) {
+    ;
+}
 
 //Riduzione di height dell header e aggiunta del pulsante sidebar
 let headerSmallStatus = false;
@@ -59,7 +63,7 @@ function showSideInHead() {
 function toggleSideNav() {
 
     let articleHeaders = document.querySelectorAll('h2');
-    console.log(articleHeaders);
+    //console.log(articleHeaders);
     let mainTitle = document.querySelector('#mainTitle');
     let sideNav = document.querySelector(".side-nav");
     
@@ -171,7 +175,6 @@ FrameParolin.style.margin = 0;
 FrameParolin.style.padding = 0;
 FrameParolin.style.alignContent = "center";
 
-
 document.addEventListener("keydown", async (event) => {
     if (event.key === ' ' || event.key === 'Delete') {
         actWord = [];
@@ -208,22 +211,26 @@ document.getElementById("submitFeedback").addEventListener("click", () => docume
 */
 
 //Invio mail con mail js
-document.getElementById('form').addEventListener('submit', function(event) {
+try{
+    document.getElementById('form').addEventListener('submit', function(event) {
 
-    event.preventDefault(); //Impedisce il comportamento predefinito di un evento, in questo caso evita ricariacamento della pagina
-    //console.log(this);
-    
-    emailjs.sendForm("service_dave_mailing", "template_avoe4p6", this, 'gg3F8WtBNKqr9Bobg')
-    
-        .then(() => { 
-            alert('Inviato!'); //Promise di sendForm risolta con successo
-        }, (err) => {
-            alert(JSON.stringify(err)); //Errore nell'invio del form, conversione in stringa JSON per essere mostrato nell'alert
-        });
-    
-    
-    document.getElementById('formContainer').style.display = 'none';
-});
+        event.preventDefault(); //Impedisce il comportamento predefinito di un evento, in questo caso evita ricariacamento della pagina
+        //console.log(this);
+        
+        emailjs.sendForm("service_dave_mailing", "template_avoe4p6", this, 'gg3F8WtBNKqr9Bobg')
+        
+            .then(() => { 
+                alert('Inviato!'); //Promise di sendForm risolta con successo
+            }, (err) => {
+                alert(JSON.stringify(err)); //Errore nell'invio del form, conversione in stringa JSON per essere mostrato nell'alert
+            });
+        
+        
+        document.getElementById('formContainer').style.display = 'none';
+    });
+} catch (error) {
+    ;
+}
 
 function initHeaders() {
     let headers = document.querySelectorAll("h2");
@@ -296,55 +303,75 @@ function modifyObjProperties (item = document.querySelectorAll('p'), propertyNam
 //modifyObjProperties(document.querySelectorAll('h2'), "backgroundColor", "black");
 
 
-const elements = [];
+const checkoutData = [];
+
+function saveCheckoutData() {
+    localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+}
+
 const GridForm = document.querySelector(".variableGrid");
 const FirstGridItem = document.querySelector(".gridItem");
 
-document.querySelector("#gridForm").addEventListener('submit', form => {
-    form.preventDefault();
+try {
+    document.querySelector("#gridForm").addEventListener('submit', form => {
+        form.preventDefault();
 
-    const formData = new FormData(form.target); //new crea un istanza di un oggetto collegato ad un costruttore, è una funzione (o una classe) progettata per creare oggetti
-    const itemTitle = formData.get("itemTitle");
-    const itemText = formData.get("itemText");
-    const giftValue = formData.get("importo");
-    const image = formData.get("image");
+        const formData = new FormData(form.target); //new crea un istanza di un oggetto collegato ad un costruttore, è una funzione (o una classe) progettata per creare oggetti
+        const itemTitle = formData.get("itemTitle");
+        const itemText = formData.get("itemText");
+        const giftValue = formData.get("importo");
+        const image = formData.get("image");
 
-    //console.log(formData);
+        //console.log(formData);
 
-    let child = document.createElement('form');
-    child.innerHTML = `        
-            <input class="itemTitle" value="${itemTitle}" readonly>
-            <textarea class="itemText" readonly>${itemText}\n${itemTitle} presenta questa gift all'Alpa Club per ottenere ${giftValue}€ di sconto sulla tua prossima avventura!</textarea>
-            `
-    child.querySelectorAll("input, textarea").forEach(element => {
-        modifyObjProperties(element, "backgroundColor, color, border, backdropFilter", "chocolate, white, none, blur(5px)");
-        element.style.backgroundColor="rgba(210, 105, 30, 0.6)"; //Per qualche motivo non riesco a scrivere un rgba nella mia funzione
-    });
+        let child = document.createElement('form');
+        child.innerHTML = `        
+                <input class="itemTitle" value="${itemTitle}" readonly>
+                <textarea class="itemText" readonly>${itemText}\n${itemTitle} presenta questa gift all'Alpa Club per ottenere ${giftValue}€ di sconto sulla tua prossima avventura!</textarea>
+                `
+        child.querySelectorAll("input, textarea").forEach(element => {
+            modifyObjProperties(element, "backgroundColor, color, border, backdropFilter", "chocolate, white, none, blur(5px)");
+            element.style.backgroundColor="rgba(210, 105, 30, 0.6)"; //Per qualche motivo non riesco a scrivere un rgba nella mia funzione
+        });
 
-    child.classList.add('gridItem');
-    switch(image) {
-        case "AlpaLand":
-            child.style.backgroundImage = "url(./Risorse/images/AlpaLand.jpg)"
-            break;
-        case "Mountains":
-            child.style.backgroundImage = "url(./Risorse/images/Mountains.jpg)"
-            break;
-        case "Park":
-            child.style.backgroundImage = "url(./Risorse/images/Park.jpg)"
-            break;
-    }
-    child.style.backgroundSize = "cover";
-    child.style.backgroundColor = "brown";
+        child.classList.add('gridItem');
+        switch(image) {
+            case "AlpaLand":
+                child.style.backgroundImage = "url(./Risorse/images/AlpaLand.jpg)"
+                break;
+            case "Mountains":
+                child.style.backgroundImage = "url(./Risorse/images/Mountains.jpg)"
+                break;
+            case "Park":
+                child.style.backgroundImage = "url(./Risorse/images/Park.jpg)"
+                break;
+        }
+        child.style.backgroundSize = "cover";
+        child.style.backgroundColor = "brown";
 
+        GridForm.append(child);
 
-    GridForm.append(child);
+        checkoutData.push(giftValue);
+        saveCheckoutData(); // Salva ogni volta che aggiungi
 
-    FirstGridItem.querySelectorAll("#itemTitle, #itemText").forEach(element => element.value ='');
-    
-});
+        console.log(checkoutData);
+
+        FirstGridItem.querySelectorAll("#itemTitle, #itemText").forEach(element => element.value ='');
+        
+    }); 
+} catch (error) {
+    ;
+}
 
 setInterval(() => {
-    if(document.querySelector(".variableGrid").childElementCount > 1) {
-        document.querySelector("#checkOutButton").disabled = false;
-    }  
+    try {
+        if(document.querySelector(".variableGrid").childElementCount > 1) {
+            document.querySelector("#checkOutButton").disabled = false;
+        }  
+    } catch (error) {
+        ;
+    }
 }, 2000)
+
+window.toggleSideNav = toggleSideNav;
+window.removeSideNav = removeSideNav;
