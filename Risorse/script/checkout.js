@@ -1,4 +1,4 @@
-const checkoutData = JSON.parse(localStorage.getItem('checkoutData') || '[]');
+const checkoutData = JSON.parse(sessionStorage.getItem('checkoutData') || '[]');
 
 //console.log('Dati checkout:', checkoutData);
 

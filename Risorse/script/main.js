@@ -306,7 +306,7 @@ function modifyObjProperties (item = document.querySelectorAll('p'), propertyNam
 const checkoutData = [];
 
 function saveCheckoutData() {
-    localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+    sessionStorage.setItem('checkoutData', JSON.stringify(checkoutData));
 }
 
 const GridForm = document.querySelector(".variableGrid");
