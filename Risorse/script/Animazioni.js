@@ -47,12 +47,12 @@ function draw() {
     
     // TODO: Reverse x direction if ball hits left or right sides
     const width = windowWidth;
-    if(x[i] - size[i] < 0 || x[i] + size[i] >= width) {
+    if(x[i] - (size[i] / 2) < 0 || x[i] + (size[i] / 2) >= width) {
       xSpeed[i] *= -1;
     }
     // TODO: Reverse y direction if ball hits top or bottom sides
     const height = windowWidth;
-    if(x[i] - size[i] < 0 || x[i] + size[i] >= height) {
+    if(x[i] - (size[i] / 2) < 0 || x[i] + (size[i] / 2) >= height) {
       ySpeed[i] *= -1;
     }
     // TODO: Set random R, G, B values
