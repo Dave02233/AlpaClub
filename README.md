@@ -20,6 +20,6 @@ La galleria offre immagini e video degli alpaca in vari contesti, per immergersi
 
 ## 🛠️ Tecnologie Utilizzate
 - **HTML/CSS** per la struttura e lo stile del sito.
-- **JavaScript** per le funzionalità interattive (sidebar, gestione navbar).
+- **JavaScript** per le funzionalità interattive (sidebar, gestione navbar, invio mail).
 - **Google Maps API** per l'integrazione della mappa.
 - **Form dinamici** per la creazione di Gift Card personalizzabili.
